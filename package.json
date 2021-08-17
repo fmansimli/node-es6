@@ -2,12 +2,12 @@
   "name": "node-es6",
   "version": "1.0.0",
   "description": "starter template for ES6 syntaxes",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node index.js",
+    "dev": "nodemon --exec babel-node src/server.js",
     "build": "babel lib -d dist",
-    "start": "npm run build && nodemon dist/index.js",
-    "serve": "npm run build && node dist/index.js",
+    "start": "npm run build && nodemon dist/server.js",
+    "serve": "npm run build && node dist/server.js",
     "test": "npm run build && mocha --require @babel/register"
   },
   "repository": {
@@ -29,6 +29,10 @@
     "@babel/core": "^7.14.6",
     "@babel/node": "^7.14.7",
     "@babel/preset-env": "^7.14.7",
-    "nodemon": "^2.0.9"
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.14.8",
+    "nodemon": "^2.0.12",
+    "rimraf": "^3.0.2"
   }
 }
