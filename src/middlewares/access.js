@@ -22,7 +22,7 @@ const access =
       if (error instanceof JsonWebTokenError) {
         return res.status(401).json({ message: "wrong token!!!" });
       }
-      req.session.destroy((err) => {
+      req.session.destroy(err => {
         if (err) {
           return res.status(401).json({ message: err.message });
         }
