@@ -1,26 +1,24 @@
-import express from "express";
 import http from "http";
 
-//import routes and controllers
-import { get404, handleError } from "./controllers/errors";
-import auth from "./routes/auth";
+import app from "./app";
 
-const app = express();
+//helpers and config
+import setConfig from "config/config";
+import connectMongo from "db/db";
+
+setConfig();
+
 const httpServer = http.createServer(app);
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 3007;
 
-app.use("/auth", auth);
-
-app.get("/", (req, res, next) => {
-  res.status(200).json({ message: "everything is ok..." });
-});
-
-app.use(get404);
-app.use(handleError);
-
-const PORT = process.env.PORT || 3000;
-httpServer.listen(PORT, () => {
-  console.log(`*** server is running on http://localhost:${PORT}`);
+httpServer.listen(PORT, async () => {
+  try {
+    await connectMongo();
+    console.log("@@@ mongodb connected ***");
+  } catch (error) {
+    console.log(`$$$ mongodb connection failled! =>>${error.message}`);
+  } finally {
+    console.log(`@@@@@  server is running on http://localhost:${PORT} ..`);
+  }
 });
