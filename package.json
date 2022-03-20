@@ -9,7 +9,9 @@
     "start": "yarn build && nodemon dist/server.js",
     "serve": "yarn build && node dist/server.js",
     "serve:pm2": "yarn build && pm2 start dist/server.js",
-    "test": "yarn build && mocha --require @babel/register",
+    "test": "mocha --exit --recursive",
+    "test-babel-dev": "mocha --exit --recursive --require @babel/register",
+    "test-babel": "yarn build && mocha --exit --recursive --require @babel/register",
     "clear": "rm -rf dist/ node_modules/ package-lock.json",
     "clear:dist": "rm -rf dist"
   },
@@ -49,8 +51,10 @@
     "@babel/runtime": "^7.14.8",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-minify": "^0.5.1",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "eslint": "^8.10.0",
-    "mocha": "^9.1.0",
+    "mocha": "^9.2.2",
     "nodemon": "^2.0.15"
   }
 }

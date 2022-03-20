@@ -8,7 +8,7 @@
         "root": ["./src"],
         "extensions": [".js", ".ts", ".json"],
         "alias": {
-          "tests": ["./tests/"],
+          "test": ["./test/"],
           "@config": "./src/config",
           "@routes": "./src/routes",
           "@controllers": "./src/controllers",
