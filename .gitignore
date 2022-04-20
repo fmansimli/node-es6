@@ -49,6 +49,8 @@ vscode/
 
 idea/
 
+package-lock.json
+
 
 # Dependency directories
 node_modules/
